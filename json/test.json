@@ -1,0 +1,21 @@
+{
+    "name": "John",
+    "age": 30,
+    "isStudent": false,
+    "hobbies": ["reading", "traveling", "coding"],
+    "address": {
+        "street": "123 Main St",
+        "city": "Anytown",
+        "zip": "12345"
+    },
+    "pets": [
+        {
+            "name": "Buddy",
+            "type": "dog"
+        },
+        {
+            "name": "Whiskers",
+            "type": "cat"
+        }
+    ]
+}
