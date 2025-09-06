@@ -1,0 +1,298 @@
+# 分析工作流配置
+name: "深度分析工作流"
+description: "专注于代码库理解、问题诊断和改进机会识别的分析流程"
+
+# 工作流阶段定义
+stages:
+  - name: "initial_exploration"
+    description: "初步代码库探索和概览"
+    subagent: "code-explorer"
+    focus: "broad_analysis"
+    inputs:
+      - target_scope
+      - analysis_depth
+      - specific_questions
+    outputs:
+      - structure_overview
+      - technology_stack
+      - initial_findings
+
+  - name: "deep_dive_analysis" 
+    description: "针对特定领域的深度分析"
+    subagent: "code-explorer"
+    focus: "detailed_analysis"
+    inputs:
+      - structure_overview
+      - focus_areas
+      - analysis_criteria
+    outputs:
+      - detailed_analysis_report
+      - pattern_identification
+      - issue_discovery
+
+  - name: "insight_synthesis"
+    description: "整合分析结果，生成洞察和建议"
+    subagent: "planner"
+    focus: "synthesis_and_recommendations"
+    inputs:
+      - detailed_analysis_report
+      - business_context
+      - strategic_goals
+    outputs:
+      - key_insights
+      - improvement_roadmap
+      - priority_recommendations
+
+  - name: "validation_review"
+    description: "验证分析结果的准确性和完整性"
+    subagent: "reviewer" 
+    focus: "analysis_validation"
+    inputs:
+      - key_insights
+      - improvement_roadmap
+      - supporting_evidence
+    outputs:
+      - validation_report
+      - confidence_assessment
+      - additional_research_needs
+
+# 分析维度配置
+analysis_dimensions:
+  architecture:
+    - "系统架构模式"
+    - "模块间耦合度"
+    - "数据流设计"
+    - "接口定义质量"
+    
+  code_quality:
+    - "代码规范遵循"
+    - "可读性和可维护性"
+    - "测试覆盖情况"
+    - "技术债务水平"
+    
+  performance:
+    - "算法效率分析"
+    - "资源使用模式"
+    - "并发处理能力"
+    - "瓶颈识别"
+    
+  security:
+    - "输入验证机制"
+    - "权限控制实现"
+    - "敏感数据处理"
+    - "安全漏洞扫描"
+    
+  maintainability:
+    - "代码结构清晰度"
+    - "文档完整性"
+    - "依赖管理"
+    - "扩展性设计"
+
+# 分析策略
+analysis_strategies:
+  breadth_first:
+    description: "广度优先，快速了解全貌"
+    approach:
+      - "扫描所有主要模块"
+      - "识别核心功能流程"
+      - "建立整体认知图谱"
+    suitable_for:
+      - "新项目初始分析"
+      - "技术栈评估"
+      - "架构理解"
+      
+  depth_first:
+    description: "深度优先，专注特定领域"
+    approach:
+      - "选择关键模块深入"
+      - "追踪完整执行路径"
+      - "分析详细实现逻辑"
+    suitable_for:
+      - "问题诊断"
+      - "性能优化"
+      - "安全审计"
+      
+  problem_focused:
+    description: "问题导向，针对性分析"
+    approach:
+      - "从问题症状开始"
+      - "逆向追踪根本原因"
+      - "验证假设和解决方案"
+    suitable_for:
+      - "bug 修复"
+      - "性能问题排查"
+      - "功能缺陷分析"
+
+# 超思维激活条件
+super_thinking_conditions:
+  pattern_recognition:
+    description: "发现复杂模式时激活"
+    triggers:
+      - "异常架构设计"
+      - "反常规实现方式"
+      - "复杂业务逻辑"
+      
+  contradiction_found:
+    description: "发现矛盾或不一致时"
+    triggers:
+      - "设计与实现不符"
+      - "文档与代码不一致"
+      - "性能与功能冲突"
+      
+  innovation_opportunity:
+    description: "识别创新机会时"
+    triggers:
+      - "技术栈升级机会"
+      - "架构重构可能"
+      - "新技术应用潜力"
+
+# 输出格式配置
+report_formats:
+  executive_summary:
+    target_audience: "管理层和决策者"
+    content:
+      - "关键发现摘要"
+      - "风险评估"
+      - "投资建议"
+      - "时间表规划"
+      
+  technical_deep_dive:
+    target_audience: "技术团队和架构师"
+    content:
+      - "详细技术分析"
+      - "代码示例和说明"
+      - "具体改进方案"
+      - "实施指导"
+      
+  action_oriented:
+    target_audience: "项目经理和开发团队"
+    content:
+      - "具体行动项清单"
+      - "优先级排序"
+      - "资源需求"
+      - "时间估算"
+
+# 质量控制
+quality_controls:
+  analysis_completeness:
+    checklist:
+      - "所有指定维度都已分析"
+      - "关键代码路径已覆盖"
+      - "重要依赖关系已识别"
+      - "潜在风险已评估"
+      
+  finding_accuracy:
+    validation_methods:
+      - "交叉验证关键发现"
+      - "代码实例支持结论"
+      - "第三方工具确认"
+      - "历史数据对比"
+      
+  recommendation_quality:
+    criteria:
+      - "建议具体可执行"
+      - "收益与成本评估"
+      - "风险和依赖分析"
+      - "成功指标定义"
+
+# 协作模式
+collaboration_patterns:
+  expert_consultation:
+    description: "跨subagent专业咨询"
+    scenarios:
+      - "需要规划视角的分析问题"
+      - "需要执行经验的可行性评估"
+      - "需要质量标准的评判依据"
+      
+  iterative_refinement:
+    description: "迭代完善分析结果"
+    process:
+      - "初步分析 → 反馈收集 → 深度分析 → 结果验证"
+      
+  parallel_analysis:
+    description: "多角度并行分析"
+    benefits:
+      - "提高分析效率"
+      - "减少认知偏差"
+      - "增加发现全面性"
+
+# 输出模板
+analysis_report_template: |
+  # 代码库深度分析报告
+  
+  ## 执行概述
+  **分析范围：** {analysis_scope}
+  **分析深度：** {analysis_depth}
+  **执行时间：** {execution_time}
+  **分析策略：** {analysis_strategy}
+  
+  ## 关键发现
+  ### 架构层面
+  {architecture_findings}
+  
+  ### 代码质量
+  {quality_findings}
+  
+  ### 性能特征
+  {performance_findings}
+  
+  ### 安全状况
+  {security_findings}
+  
+  ## 详细分析
+  ### 优势识别
+  {strengths_analysis}
+  
+  ### 问题诊断
+  {issues_diagnosis}
+  
+  ### 改进机会
+  {improvement_opportunities}
+  
+  ## 行动建议
+  ### 即时行动项
+  {immediate_actions}
+  
+  ### 短期规划 (1-3个月)
+  {short_term_planning}
+  
+  ### 长期规划 (3-12个月)
+  {long_term_planning}
+  
+  ## 风险评估
+  {risk_assessment}
+  
+  ## 投资回报分析
+  {roi_analysis}
+  
+  ## 附录
+  ### 分析方法说明
+  {methodology_notes}
+  
+  ### 支持数据
+  {supporting_data}
+
+# 自适应设置
+adaptive_settings:
+  complexity_scaling:
+    simple_project: 
+      analysis_depth: "surface"
+      time_allocation: "short"
+    
+    medium_project:
+      analysis_depth: "moderate" 
+      time_allocation: "standard"
+      
+    complex_project:
+      analysis_depth: "deep"
+      time_allocation: "extended"
+      
+  domain_adaptation:
+    web_application:
+      focus_areas: ["security", "performance", "scalability"]
+      
+    data_processing:
+      focus_areas: ["algorithm_efficiency", "data_integrity", "throughput"]
+      
+    system_tools:
+      focus_areas: ["reliability", "usability", "performance"]

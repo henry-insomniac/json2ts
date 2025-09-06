@@ -1,0 +1,190 @@
+# 开发工作流配置
+name: "开发工作流"
+description: "代码探索 → 计划制定 → 方案执行 → 质量审查的完整开发流程"
+
+# 工作流阶段定义
+stages:
+  - name: "code_exploration" 
+    description: "代码库深度分析和理解"
+    subagent: "code-explorer"
+    inputs:
+      - user_request
+      - project_context
+    outputs:
+      - code_analysis_report
+      - technical_insights
+      - improvement_opportunities
+    
+  - name: "strategic_planning"
+    description: "基于分析结果制定详细实施计划"
+    subagent: "planner"
+    inputs:
+      - code_analysis_report
+      - user_requirements
+      - technical_constraints
+    outputs:
+      - implementation_plan
+      - task_breakdown
+      - risk_assessment
+      - resource_requirements
+
+  - name: "implementation"
+    description: "按计划执行代码实现和系统变更"
+    subagent: "executor"
+    inputs:
+      - implementation_plan
+      - task_breakdown
+      - quality_standards
+    outputs:
+      - code_changes
+      - test_results
+      - implementation_log
+      - status_updates
+
+  - name: "quality_review"
+    description: "全面的代码质量和安全审查"
+    subagent: "reviewer"
+    inputs:
+      - code_changes
+      - test_results
+      - implementation_log
+    outputs:
+      - quality_report
+      - security_assessment
+      - improvement_recommendations
+      - approval_status
+
+# 超思维模式集成点
+super_thinking_triggers:
+  - condition: "complex_problem"
+    description: "当问题复杂度超过阈值时自动激活"
+    threshold: "high"
+    
+  - condition: "multiple_solutions" 
+    description: "存在多种解决方案需要深度分析时"
+    
+  - condition: "innovation_required"
+    description: "需要创新突破的场景"
+    
+  - condition: "strategic_decision"
+    description: "涉及重要技术决策时"
+
+  - condition: "user_request"
+    description: "用户明确要求深度思考时"
+    keywords: ["超思维", "深度分析", "创新方案", "突破性"]
+
+# 工作流规则
+workflow_rules:
+  - rule: "sequential_execution"
+    description: "阶段按顺序执行，前一阶段完成后才进入下一阶段"
+    
+  - rule: "feedback_loops"
+    description: "任何阶段都可以向前一阶段反馈，要求重新处理"
+    
+  - rule: "parallel_consultation"
+    description: "任何subagent都可以咨询其他subagent的专业意见"
+    
+  - rule: "super_thinking_override"
+    description: "超思维模式可以在任何阶段激活，并可能重新定义问题"
+
+# 质量门控
+quality_gates:
+  - stage: "code_exploration"
+    criteria:
+      - "分析报告完整性 >= 90%"
+      - "关键问题识别准确"
+      - "改进建议具体可行"
+      
+  - stage: "strategic_planning"  
+    criteria:
+      - "计划详细度和可执行性"
+      - "风险识别和应对措施"
+      - "资源估算合理性"
+      
+  - stage: "implementation"
+    criteria:
+      - "代码质量标准达成"
+      - "测试覆盖率 >= 80%"
+      - "功能需求完全实现"
+      
+  - stage: "quality_review"
+    criteria:
+      - "无严重质量问题"
+      - "安全检查通过" 
+      - "性能指标达标"
+
+# 工作流配置
+settings:
+  # 并行处理设置
+  parallel_processing:
+    enabled: true
+    max_concurrent_tasks: 3
+    
+  # 超时设置
+  timeouts:
+    code_exploration: 300  # 5分钟
+    strategic_planning: 180 # 3分钟  
+    implementation: 600    # 10分钟
+    quality_review: 240    # 4分钟
+    
+  # 重试机制
+  retry:
+    max_attempts: 3
+    backoff_strategy: "exponential"
+    
+  # 通知设置
+  notifications:
+    stage_completion: true
+    error_alerts: true
+    progress_updates: true
+
+# 输出模板
+output_templates:
+  final_report: |
+    # 开发工作流完成报告
+    
+    ## 项目概述
+    **请求：** {user_request}
+    **完成时间：** {completion_time}
+    **总耗时：** {total_duration}
+    
+    ## 执行摘要
+    ### 代码探索阶段
+    {code_exploration_summary}
+    
+    ### 计划制定阶段  
+    {planning_summary}
+    
+    ### 实施执行阶段
+    {implementation_summary}
+    
+    ### 质量审查阶段
+    {review_summary}
+    
+    ## 最终交付
+    **代码变更：** {code_changes_count} 个文件
+    **新增功能：** {new_features}
+    **修复问题：** {fixed_issues}
+    **测试覆盖率：** {test_coverage}%
+    
+    ## 质量评估
+    **整体评分：** {overall_score}/100
+    **建议后续行动：** {next_actions}
+
+# 错误处理策略
+error_handling:
+  - error_type: "analysis_incomplete"
+    action: "extend_exploration_time"
+    fallback: "request_human_input"
+    
+  - error_type: "planning_conflicts" 
+    action: "activate_super_thinking"
+    fallback: "stakeholder_consultation"
+    
+  - error_type: "implementation_blocked"
+    action: "alternative_solution_search"
+    fallback: "scope_adjustment"
+    
+  - error_type: "quality_failure"
+    action: "immediate_remediation"
+    fallback: "rollback_changes"
